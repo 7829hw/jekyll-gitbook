@@ -76,7 +76,7 @@ Like many communication protocols, MCP is designed for 2-way communication. This
 
 <a id="The-MCP-Connection-Lifecycle"></a>
 
-![The MCP Connection Lifecycle](chapter_2/connection_lifecycle_B_Pi.png)
+![The MCP Connection Lifecycle]({{ site.baseurl }}/assets/ai-agents-with-mcp/chapter_2/connection_lifecycle_B_Pi.png)
 
 *Figure 2-1. MCP’s connection lifecycle consists of three phases: Initialization, operation, and disconnection. Within each phase, messages are passed between client and server in a series of requests and responses, demonstrating the bidirectional nature of client-server communication in MCP.*
 
@@ -122,7 +122,7 @@ In the beginning of the chapter, during the discussion about the origins of MCP,
 
 <a id="The-LSP-architecture"></a>
 
-![The LSP architecture, focusing on communication paths](chapter_2/lsp_architecture_B_Pi.png)
+![The LSP architecture, focusing on communication paths]({{ site.baseurl }}/assets/ai-agents-with-mcp/chapter_2/lsp_architecture_B_Pi.png)
 
 *Figure 2-2. The LSP architecture consists of a host application (the IDE) with a client and 1 or more language servers. The host application emits events to the client, which can turn them into a request or notification to the language server. The language server responds to a request with a response, which the client relays to the host application.*
 
@@ -136,7 +136,7 @@ These can be hosted by a third party on their own web servers or within an organ
 
 <a id="The-MCP-architecture"></a>
 
-![The MCP architecture](chapter_2/mcp_architecture_B_Pi.png)
+![The MCP architecture]({{ site.baseurl }}/assets/ai-agents-with-mcp/chapter_2/mcp_architecture_B_Pi.png)
 
 *Figure 2-3. The MCP architecture consists of a host application with a client and 1 or more MCP servers (only one client instance may connect to a single server). The host application calls the client, which can turn them into a request or notification to the MCP server. The MCP server responds to a request with a response, which the client relays to the host application. With elicitations and sampling, the MCP server cal also send requests to the client which will handle them with the application or LLM and send a request back to the server.*
 
@@ -158,7 +158,7 @@ Clients also provide a few few features to servers, augmenting their functionali
 
 <a id="sampling_sequence_diagram"></a>
 
-![Sales report generation with sampling](chapter_2/sampling_sequence_diagram_B_Pi.png)
+![Sales report generation with sampling]({{ site.baseurl }}/assets/ai-agents-with-mcp/chapter_2/sampling_sequence_diagram_B_Pi.png)
 
 *Figure 2-4. This sequence diagram shows an example sampling workflow. In it, the user asks the host application for a sales report. The host’s LLM chooses to call the sales reporting tool, which triggers the client to send a tool execution request to the server with the tool name and parameters. The server runs the code, and in its response returns the data, a report template, and a prompt. The client then can forward everything to the host LLM to generate the report and then return the result to the user.*
 
@@ -234,7 +234,7 @@ For those of you building with MCP (hopefully everyone reading this book!), ther
 
 <a id="mcp_inspector"></a>
 
-![The MCP Inspector UI](chapter_2/mcp_inspector_B_Pi.png)
+![The MCP Inspector UI]({{ site.baseurl }}/assets/ai-agents-with-mcp/chapter_2/mcp_inspector_B_Pi.png)
 
 *Figure 2-5. The MCP Inspector UI, showing the connection setup in the left menubar, the server function selectors in the top menu, and the tool inspector UI in the center.*
 

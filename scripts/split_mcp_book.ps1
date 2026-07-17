@@ -1,7 +1,10 @@
 $ErrorActionPreference = 'Stop'
 
-$bookDir = Join-Path $PSScriptRoot '..\AI_Agent_with_MCP'
-$koreanSource = Join-Path $bookDir 'AI_Agents_with_MCP_ko.md'
+$workspace = Join-Path $PSScriptRoot '..'
+$pagesRoot = Join-Path $workspace '_pages\ai-agents-with-mcp'
+$englishDir = Join-Path $pagesRoot 'en'
+$koreanDir = Join-Path $pagesRoot 'ko'
+$koreanSource = Join-Path $workspace '_drafts\ai-agents-with-mcp\AI_Agents_with_MCP_ko.md'
 $content = Get-Content -LiteralPath $koreanSource -Raw -Encoding utf8
 
 function Get-FrontMatter {
@@ -58,12 +61,11 @@ foreach ($match in $matches) {
         $order = [int]$chapterNumber
     }
 
-    # Korean pages live one URL level below the shared image assets and English pages.
-    $body = [regex]::Replace($body, '\]\(chapter_([1-7])/', '](../chapter_$1/')
+    $body = [regex]::Replace($body, '\]\(chapter_([1-7])/', ']({{ site.baseurl }}/assets/ai-agents-with-mcp/chapter_$1/')
     $body = [regex]::Replace($body, '\(chapter_([1-7])\.md', '(../chapter_$1.html')
 
     $frontMatter = Get-FrontMatter -Title $titleMatch.Groups[1].Value -Permalink $permalink -Language 'ko' -Order $order
-    Set-Content -LiteralPath (Join-Path $bookDir $outputName) -Value ($frontMatter + $body) -Encoding utf8 -NoNewline
+    Set-Content -LiteralPath (Join-Path $koreanDir $outputName) -Value ($frontMatter + $body) -Encoding utf8 -NoNewline
 }
 
 $englishFiles = @(
@@ -79,7 +81,7 @@ $englishFiles = @(
 )
 
 foreach ($entry in $englishFiles) {
-    $path = Join-Path $bookDir $entry.Name
+    $path = Join-Path $englishDir $entry.Name
     $body = Get-Content -LiteralPath $path -Raw -Encoding utf8
     if ($body.StartsWith('---')) {
         continue
@@ -90,6 +92,7 @@ foreach ($entry in $englishFiles) {
         throw "No title heading found for $($entry.Name)."
     }
 
+    $body = [regex]::Replace($body, '\]\(chapter_([1-7])/', ']({{ site.baseurl }}/assets/ai-agents-with-mcp/chapter_$1/')
     $body = [regex]::Replace($body, '\(chapter_([1-7])\.md', '(chapter_$1.html')
     $frontMatter = Get-FrontMatter -Title $titleMatch.Groups[1].Value -Permalink $entry.Permalink -Language 'en' -Order $entry.Order
     Set-Content -LiteralPath $path -Value ($frontMatter + $body.TrimStart()) -Encoding utf8 -NoNewline

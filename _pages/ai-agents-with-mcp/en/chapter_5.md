@@ -976,7 +976,7 @@ if __name__ == "__main__":
 
 This example is the same resource function that you encountered in [Example 5-4](#resource_prompt), the URI is set to `file://knowledge.txt`, and the function returns the full path to the file as a string. The code building the MCP response that is called by the `@mcp.resource()` decorator will handle your path by opening and reading the file, returning the contents as a string. For the simplest resources, this can be all you need. Figure 5-4 shows the resource loaded into MCP Inspector, which you’ll learn more about in [Chapter 7](chapter_7.html#ch07). In this figure, you can see the list of resources the server provides in the left panel, which is just the `knowledge_base` resource, and in the right panel are the loaded contents of the resource. Notice how the `uri` and `mimeType` are displayed, and because this resource function returns a string, the contents are displayed under the `text` key.
 
-![MCP Inspector with resource loaded](chapter_5/mcp_inspector_resource_bpmI.png)
+![MCP Inspector with resource loaded]({{ site.baseurl }}/assets/ai-agents-with-mcp/chapter_5/mcp_inspector_resource_bpmI.png)
 
 *Figure 5-1. MCP Inspector with the knowledge\_base resource listed in the left panel and loaded in the right.*
 
@@ -1014,7 +1014,7 @@ if __name__ == "__main__":
 
 In this example, we create a resource template with `@mcp.resource()` by enclosing the variable part of the resource URI with curly braces. Notice that there is an extra `/` after the `file://` URI scheme. This is needed when the variable portion of the URI is at the beginning of the URI, otherwise you can use `file://` on its own. Any variable parts of the URI are also made into parameters for the resource function, which can then be used in the function itself. In this example, we get the Path object representation of the full path to the file in question, then check the file ending: if `.txt`, we read the file as a string, otherwise we read it into memory as a binary blob. Either way, the result is returned to the client. While not necessary for a simple example, in production-ready code, your filetype checks should be more expansive and robust than what is shown here. Figure 5-6 shows the resource template loaded into MCP Inspector with a valid `filename` parameter.
 
-![MCP Inspector with resource template loaded](chapter_5/mcp_inspector_resource_template_bpmI.png)
+![MCP Inspector with resource template loaded]({{ site.baseurl }}/assets/ai-agents-with-mcp/chapter_5/mcp_inspector_resource_template_bpmI.png)
 
 *Figure 5-2. MCP Inspector with the resource\_template resource template in the middle panel and loaded with a parameter value of `2.png` in the right panel.*
 

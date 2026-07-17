@@ -47,7 +47,6 @@ permalink:                /:categories/:year-:month-:day-:title:output_ext
 
 exclude:
   - _drafts
-  - AI_Agent_with_MCP/AI_Agents_with_MCP_ko.md
   - scripts
 
 collections:

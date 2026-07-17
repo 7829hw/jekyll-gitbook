@@ -38,7 +38,7 @@ When you are developing a server, MCP Inspector might be the tool you use the mo
 
 <a id="mcp_inspector_main_menu"></a>
 
-![MCP Inspector's main menu](chapter_7/mcp_inspector_menu_AvxK.png)
+![MCP Inspector's main menu]({{ site.baseurl }}/assets/ai-agents-with-mcp/chapter_7/mcp_inspector_menu_AvxK.png)
 
 *Figure 7-1. The main menu of MCP Inspector. The left panel shows the connection setup, with options for transports, authentication, and connection configuration. The top menubar allows you to navigate to different specific Inspector sections that allow you to visualize primitive functionality (such as list and execute functions) as well as more advanced functionality like server pings, sampling monitoring, elicitation interaction, root configuration, and authentication inspection.*
 
@@ -46,7 +46,7 @@ When you are developing a server, MCP Inspector might be the tool you use the mo
 
 <a id="mcp_inspector_sampling"></a>
 
-![MCP Inspector showing a sampling request in progress](chapter_7/mcp_inspector_sampling_AvxK.png)
+![MCP Inspector showing a sampling request in progress]({{ site.baseurl }}/assets/ai-agents-with-mcp/chapter_7/mcp_inspector_sampling_AvxK.png)
 
 *Figure 7-2. MCP Inspector showing a sampling request in progress, with the sampling request on the left and the model call object on the right.*
 
@@ -374,7 +374,7 @@ In the OAuth specification, there are two servers: a *\_resource server (RS)* an
 
 <a id="oauth_authorization_flow"></a>
 
-![MCP Inspector showing a sampling request in progress](chapter_7/oauth_architecture_AvxK.png)
+![MCP Inspector showing a sampling request in progress]({{ site.baseurl }}/assets/ai-agents-with-mcp/chapter_7/oauth_architecture_AvxK.png)
 
 *Figure 7-3. The authorization flow between a client application, an authorization server, and a resource server.*
 

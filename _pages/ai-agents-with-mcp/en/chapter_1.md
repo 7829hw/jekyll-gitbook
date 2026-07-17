@@ -24,7 +24,7 @@ Let’s take a look at a common use for agents, and what this loop would look li
 
 <a id="action-feedback-loop"></a>
 
-![A hypothetical coding agent's action-feedback loop](chapter_1/agent-feedback-loop_7imp.png)
+![A hypothetical coding agent's action-feedback loop]({{ site.baseurl }}/assets/ai-agents-with-mcp/chapter_1/agent-feedback-loop_7imp.png)
 
 *Figure 1-1. A hypothetical action-feedback loop in action for a coding agent.*
 
@@ -36,7 +36,7 @@ This is distinct from an *agentic workflow*, a system in which code, rather than
 
 <a id="prompt-chaining-example"></a>
 
-![Prompt chaining example](chapter_1/prompt-chaining-example_7imp.png)
+![Prompt chaining example]({{ site.baseurl }}/assets/ai-agents-with-mcp/chapter_1/prompt-chaining-example_7imp.png)
 
 *Figure 1-2. A hypothetical prompt-chaining workflow for a language detection and translation agent.*
 
@@ -46,7 +46,7 @@ By contrast, an agentic approach, however, would provide language detection and 
 
 <a id="Agentic-workflow-example"></a>
 
-![Agentic workflow example](chapter_1/translation-example-agent_7imp.png)
+![Agentic workflow example]({{ site.baseurl }}/assets/ai-agents-with-mcp/chapter_1/translation-example-agent_7imp.png)
 
 *Figure 1-3. A language detection and translation agent.*
 
@@ -98,7 +98,7 @@ Before MCP, even though agentic AI was still fairly new, organizations that were
 
 <a id="mxn-problem"></a>
 
-![The MxN problem](chapter_1/mxn-problem_7imp.png)
+![The MxN problem]({{ site.baseurl }}/assets/ai-agents-with-mcp/chapter_1/mxn-problem_7imp.png)
 
 *Figure 1-4. An illustration of the MxN problem where 3 models all need access to 4 different tools. This results in 12 (4 x 3) connectors being needed.*
 
@@ -106,7 +106,7 @@ The Model Context Protocol, inspired by the Language Server Protocol (LSP), prov
 
 <a id="mandn_solution"></a>
 
-![The MandN solution](chapter_1/mandn_solution_7imp.png)
+![The MandN solution]({{ site.baseurl }}/assets/ai-agents-with-mcp/chapter_1/mandn_solution_7imp.png)
 
 *Figure 1-5. With MCP providing a common interface between tools and models, we now only need 7 connectors to provide the three models access to the four tools instead of 12. Each model or AI application simply needs its own connector to the MCP server, and MCP provides a common interface for all of them to use the available tools.*
 

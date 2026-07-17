@@ -976,7 +976,7 @@ if __name__ == "__main__":
 
 [예제 5-4](#resource_prompt)에서 본 것과 같은 리소스 함수다. URI를 `file://knowledge.txt`로 설정하고 파일의 전체 경로를 문자열로 반환한다. `@mcp.resource()` 데코레이터가 호출하는 MCP 응답 구축 코드는 경로의 파일을 열고 읽어 콘텐츠를 문자열로 반환한다. 가장 단순한 리소스에는 이것으로 충분하다. 그림 5-4는 [7장](../chapter_7.html#ch07)에서 자세히 배울 MCP Inspector에 리소스를 불러온 모습이다. 왼쪽에는 서버가 제공하는 `knowledge_base` 리소스 목록, 오른쪽에는 불러온 콘텐츠가 보인다. `uri`와 `mimeType`이 표시되고 함수가 문자열을 반환하므로 콘텐츠는 `text` 키 아래 나타난다.
 
-![리소스를 불러온 MCP Inspector](../chapter_5/mcp_inspector_resource_bpmI.png)
+![리소스를 불러온 MCP Inspector]({{ site.baseurl }}/assets/ai-agents-with-mcp/chapter_5/mcp_inspector_resource_bpmI.png)
 
 *그림 5-1. 왼쪽에 knowledge_base 리소스를 나열하고 오른쪽에 콘텐츠를 불러온 MCP Inspector.*
 
@@ -1014,7 +1014,7 @@ if __name__ == "__main__":
 
 이 예제에서는 리소스 URI의 변수 부분을 중괄호로 감싸 `@mcp.resource()`로 템플릿을 만든다. `file://` URI 스킴 뒤에 `/`가 하나 더 있다는 점에 주목하자. 변수 부분이 URI 시작에 있을 때 필요하며 그렇지 않으면 `file://`만 사용하면 된다. URI의 변수 부분은 리소스 함수 매개변수가 되어 함수 안에서 사용할 수 있다. 대상 파일 전체 경로의 Path 객체를 얻고 확장자를 확인한다. `.txt`면 문자열로, 아니면 바이너리 blob으로 메모리에 읽는다. 어느 쪽이든 결과를 클라이언트에 반환한다. 단순 예제에는 필요 없지만 프로덕션 코드는 더 폭넓고 견고하게 파일 형식을 검사해야 한다. 그림 5-6은 유효한 `filename` 매개변수로 MCP Inspector에 불러온 리소스 템플릿을 보여 준다.
 
-![리소스 템플릿을 불러온 MCP Inspector](../chapter_5/mcp_inspector_resource_template_bpmI.png)
+![리소스 템플릿을 불러온 MCP Inspector]({{ site.baseurl }}/assets/ai-agents-with-mcp/chapter_5/mcp_inspector_resource_template_bpmI.png)
 
 *그림 5-2. 가운데에 resource_template 리소스 템플릿을 표시하고 오른쪽에 매개변수 값 `2.png`로 불러온 MCP Inspector.*
 
