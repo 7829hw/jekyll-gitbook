@@ -1,5 +1,26 @@
-/* This file is kept intentionally blank inside the jekyll-github-theme
- * It gets imported at the end of custom.css
- * Its purpose is for users of the theme to be able to add css rules from a blank file
- *   these get simply added to the ones already active in the layout.
- */
+:root {
+    --font-sans: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+    --font-serif: "Noto Serif KR", "Noto Serif CJK KR", "Batang", serif;
+    --font-mono: "JetBrains Mono", "D2Coding", Consolas, monospace;
+    --font-family: var(--font-sans);
+}
+
+body,
+.book.font-family-1 {
+    font-family: var(--font-sans);
+}
+
+.book.font-family-0 {
+    font-family: var(--font-serif);
+}
+
+code,
+kbd,
+pre,
+samp,
+.markdown-section code,
+.markdown-section pre,
+#book-search-results .search-results .has-results .search-results-item code,
+#book-search-results .search-results .has-results .search-results-item pre {
+    font-family: var(--font-mono);
+}
