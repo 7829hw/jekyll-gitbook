@@ -1,0 +1,39 @@
+english:
+  - title: Brief Table of Contents
+    url: /AI_Agent_with_MCP/index.html
+  - title: Chapter 1. Agentic AI and MCP
+    url: /AI_Agent_with_MCP/chapter_1.html
+  - title: Chapter 2. An Introduction to MCP
+    url: /AI_Agent_with_MCP/chapter_2.html
+  - title: Chapter 3. Building MCP Clients
+    url: /AI_Agent_with_MCP/chapter_3.html
+  - title: Chapter 4. Advanced MCP Clients
+    url: /AI_Agent_with_MCP/chapter_4.html
+  - title: Chapter 5. Building MCP Servers
+    url: /AI_Agent_with_MCP/chapter_5.html
+  - title: Chapter 6. Advanced MCP Servers
+    url: /AI_Agent_with_MCP/chapter_6.html
+  - title: Chapter 7. Testing, Security, and Sharing
+    url: /AI_Agent_with_MCP/chapter_7.html
+  - title: About the Author
+    url: /AI_Agent_with_MCP/about_the_author.html
+
+korean:
+  - title: 간략 목차
+    url: /AI_Agent_with_MCP/ko/index.html
+  - title: 1장. 에이전트 AI와 MCP
+    url: /AI_Agent_with_MCP/ko/chapter_1.html
+  - title: 2장. 모델 컨텍스트 프로토콜 소개
+    url: /AI_Agent_with_MCP/ko/chapter_2.html
+  - title: 3장. MCP 클라이언트 구축
+    url: /AI_Agent_with_MCP/ko/chapter_3.html
+  - title: 4장. MCP 클라이언트 고급 활용
+    url: /AI_Agent_with_MCP/ko/chapter_4.html
+  - title: 5장. MCP 서버 구축
+    url: /AI_Agent_with_MCP/ko/chapter_5.html
+  - title: 6장. MCP 서버 고급 활용
+    url: /AI_Agent_with_MCP/ko/chapter_6.html
+  - title: 7장. MCP 서버 테스트·보안·공유
+    url: /AI_Agent_with_MCP/ko/chapter_7.html
+  - title: 저자 소개
+    url: /AI_Agent_with_MCP/ko/about_the_author.html

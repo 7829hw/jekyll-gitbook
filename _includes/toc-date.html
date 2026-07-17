@@ -48,6 +48,42 @@
 
             <li class="divider"></li>
 
+            <li class="header">English</li>
+            {% for item in site.data.mcp_book.english %}
+                {% if page.url == item.url %}
+                <li class="chapter active" data-path="{{site.baseurl}}{{item.url}}">
+                {% else %}
+                <li class="chapter" data-path="{{site.baseurl}}{{item.url}}">
+                {% endif %}
+                    <a href="{{site.baseurl}}{{item.url}}" onclick="pageScrollToTop(this)">
+                        {{ item.title | escape }}
+                    </a>
+                    {% if site.toc.enabled and page.url == item.url %}
+                        {% include toc.html html=content h_min=site.toc.h_min h_max=site.toc.h_max %}
+                    {% endif %}
+                </li>
+            {% endfor %}
+
+            <li class="divider"></li>
+            <li class="header">한국어</li>
+            {% for item in site.data.mcp_book.korean %}
+                {% if page.url == item.url %}
+                <li class="chapter active" data-path="{{site.baseurl}}{{item.url}}">
+                {% else %}
+                <li class="chapter" data-path="{{site.baseurl}}{{item.url}}">
+                {% endif %}
+                    <a href="{{site.baseurl}}{{item.url}}" onclick="pageScrollToTop(this)">
+                        {{ item.title | escape }}
+                    </a>
+                    {% if site.toc.enabled and page.url == item.url %}
+                        {% include toc.html html=content h_min=site.toc.h_min h_max=site.toc.h_max %}
+                    {% endif %}
+                </li>
+            {% endfor %}
+
+            <li class="divider"></li>
+
+            {% unless site.book_only %}
             {% if site.ordered_collections %}
                 {% for label in site.ordered_collections %}
                     {% assign collection = site.collections | where: "label", label | first %}
@@ -114,6 +150,7 @@
                     {% endif %}
                 {% endfor %}
             {% endif %}
+            {% endunless %}
         </ul>
     </nav>
 </div>
