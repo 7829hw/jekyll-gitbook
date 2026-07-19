@@ -1,6 +1,9 @@
 require(['gitbook', 'jquery'], function(gitbook, $) {
     // Configuration
-    var MAX_SIZE       = 4,
+    var FONT_SIZE_VERSION = 2,
+        FONT_SIZES     = [1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2, 3.4, 3.6, 3.8, 4.0],
+        LEGACY_SIZE_MAP = [0, 1, 2, 5, 14],
+        MAX_SIZE       = FONT_SIZES.length - 1,
         MIN_SIZE       = 0,
         BUTTON_ID;
 
@@ -158,6 +161,7 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
         $book[0].className = $book[0].className.replace(/\bfont-\S+/g, '');
         $book.addClass('font-size-'+fontState.size);
         $book.addClass('font-family-'+fontState.family);
+        document.documentElement.style.setProperty('--book-font-size', FONT_SIZES[fontState.size]+'rem');
 
         if(fontState.theme !== 0) {
             $book[0].className = $book[0].className.replace(/\bcolor-theme-\S+/g, '');
@@ -168,14 +172,27 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
     function init(config) {
         // Search for plugin configured font family
         var configFamily = getFontFamilyId(config.family),
-            configTheme = getThemeId(config.theme);
+            configTheme = getThemeId(config.theme),
+            configSize = typeof config.size === 'number' ? config.size : 2;
 
         // Instantiate font state object
         fontState = gitbook.storage.get('fontState', {
-            size:   config.size || 2,
+            size:   configSize,
             family: configFamily,
             theme:  configTheme
         });
+
+        // Preserve the actual size selected with the legacy five-step scale.
+        if (fontState.sizeVersion !== FONT_SIZE_VERSION) {
+            fontState.size = LEGACY_SIZE_MAP[fontState.size];
+            fontState.sizeVersion = FONT_SIZE_VERSION;
+        }
+
+        if (typeof fontState.size !== 'number' || fontState.size < MIN_SIZE || fontState.size > MAX_SIZE) {
+            fontState.size = 2;
+        }
+
+        gitbook.storage.set('fontState', fontState);
 
         update();
     }

@@ -58,20 +58,8 @@
 .book.color-theme-2 .book-body .page-wrapper .page-inner section {
   background: #1c1f2b;
 }
-.book.font-size-0 .book-body .page-inner section {
-  font-size: 1.2rem;
-}
-.book.font-size-1 .book-body .page-inner section {
-  font-size: 1.4rem;
-}
-.book.font-size-2 .book-body .page-inner section {
-  font-size: 1.6rem;
-}
-.book.font-size-3 .book-body .page-inner section {
-  font-size: 2.2rem;
-}
-.book.font-size-4 .book-body .page-inner section {
-  font-size: 4rem;
+.book .book-body .page-inner section {
+  font-size: var(--book-font-size, 1.6rem);
 }
 .book.font-family-0 {
   font-family: Georgia, serif;
