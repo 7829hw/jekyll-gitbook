@@ -15,6 +15,7 @@
 
 html {
     background: #ffffff;
+    color-scheme: light;
     scroll-behavior: smooth;
 }
 
@@ -22,6 +23,18 @@ body {
     margin: 0;
     background: #ffffff;
     font-family: var(--font-sans);
+}
+
+html[data-book-color-theme="sepia"],
+html[data-book-color-theme="sepia"] body {
+    background: #eee6d9;
+    color-scheme: light;
+}
+
+html[data-book-color-theme="night"],
+html[data-book-color-theme="night"] body {
+    background: #141512;
+    color-scheme: dark;
 }
 
 .book {
@@ -72,7 +85,8 @@ body {
     font-family: var(--font-sans);
 }
 
-.book.color-theme-1 {
+.book.color-theme-1,
+html[data-book-color-theme="sepia"] .book {
     --canvas: #eee6d9;
     --surface: #f8f2e8;
     --surface-subtle: #f2e8d8;
@@ -117,7 +131,8 @@ body {
     --code-text: #eee6da;
 }
 
-.book.color-theme-2 {
+.book.color-theme-2,
+html[data-book-color-theme="night"] .book {
     --canvas: #141512;
     --surface: #1d1e1b;
     --surface-subtle: #242520;
@@ -553,6 +568,12 @@ samp,
     font-size: 11px;
 }
 
+.book .book-header .font-settings .font-theme-option.active {
+    color: var(--accent) !important;
+    background: var(--accent-soft) !important;
+    box-shadow: inset 0 0 0 1px var(--line);
+}
+
 /* Reading surface */
 .page-wrapper {
     background: transparent;
@@ -567,10 +588,10 @@ samp,
     overflow: visible;
     padding: clamp(32px, 5vw, 56px);
     color: var(--text) !important;
-    background: var(--surface) !important;
-    border: 1px solid var(--line);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
+    background: transparent !important;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
     line-height: 1.8;
     letter-spacing: -0.002em;
 }
@@ -1199,8 +1220,8 @@ mark[data-markjs="true"] {
 
     .book .book-body .page-wrapper .page-inner section.normal {
         padding: 28px 22px;
-        border-radius: var(--radius-lg);
-        box-shadow: var(--shadow-sm);
+        border-radius: 0;
+        box-shadow: none;
     }
 
     .markdown-section h1:first-of-type,

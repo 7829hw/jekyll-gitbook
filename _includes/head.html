@@ -10,6 +10,39 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="description" content="{{site.description}}">
 <meta name="theme-color" content="#ffffff">
+<script>
+    (function() {
+        var state = null;
+        var mode = 'auto';
+        var theme = 'white';
+
+        try {
+            state = JSON.parse(window.localStorage.getItem(':fontState'));
+        } catch (e) {}
+
+        if (state) {
+            if (state.themeMode === 'manual' || state.themeMode === 'auto') {
+                mode = state.themeMode;
+            } else if (state.theme === 1 || state.theme === 2) {
+                mode = 'manual';
+            }
+        }
+
+        if (mode === 'manual') {
+            theme = state.theme === 2 ? 'night' : (state.theme === 1 ? 'sepia' : 'white');
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            theme = 'night';
+        }
+
+        document.documentElement.setAttribute('data-book-color-theme', theme);
+        document.documentElement.setAttribute('data-book-theme-mode', mode);
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', {
+            white: '#ffffff',
+            sepia: '#eee6d9',
+            night: '#141512'
+        }[theme]);
+    })();
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
