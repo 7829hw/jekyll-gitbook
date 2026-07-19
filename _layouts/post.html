@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" >
+<html lang="{{ page.lang | default: 'en' }}">
     <head>
 
         {%- include head.html -%}
@@ -14,8 +14,8 @@
             <link rel="next" href="{{site.baseurl}}{{page.next.url}}" />
         {% endif %}
     </head>
-    <body>
-        <div class="book">
+    <body class="layout-{{ page.layout | default: 'post' }}">
+        <div class="book layout-{{ page.layout | default: 'post' }}">
 
             {%- include toc-date.html -%}
 

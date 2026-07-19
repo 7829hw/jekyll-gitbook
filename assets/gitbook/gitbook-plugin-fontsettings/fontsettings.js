@@ -1,6 +1,7 @@
 require(['gitbook', 'jquery'], function(gitbook, $) {
     // Configuration
     var FONT_SIZE_VERSION = 2,
+        DEFAULT_SIZE    = 2,
         FONT_SIZES     = [1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0, 3.2, 3.4, 3.6, 3.8, 4.0],
         LEGACY_SIZE_MAP = [0, 1, 2, 5, 14],
         MAX_SIZE       = FONT_SIZES.length - 1,
@@ -89,6 +90,14 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
         saveFontSettings();
     }
 
+    // Restore the configured default font size
+    function resetFontSize(e) {
+        if (e) e.preventDefault();
+
+        fontState.size = DEFAULT_SIZE;
+        saveFontSettings();
+    }
+
     // Change font family
     function changeFontFamily(configName, e) {
         if (e && e instanceof Event) {
@@ -173,7 +182,7 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
         // Search for plugin configured font family
         var configFamily = getFontFamilyId(config.family),
             configTheme = getThemeId(config.theme),
-            configSize = typeof config.size === 'number' ? config.size : 2;
+            configSize = typeof config.size === 'number' ? config.size : DEFAULT_SIZE;
 
         // Instantiate font state object
         fontState = gitbook.storage.get('fontState', {
@@ -189,7 +198,7 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
         }
 
         if (typeof fontState.size !== 'number' || fontState.size < MIN_SIZE || fontState.size > MAX_SIZE) {
-            fontState.size = 2;
+            fontState.size = DEFAULT_SIZE;
         }
 
         gitbook.storage.set('fontState', fontState);
@@ -211,12 +220,17 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
             dropdown: [
                 [
                     {
-                        text: 'A',
+                        text: 'A−',
                         className: 'font-reduce',
                         onClick: reduceFontSize
                     },
                     {
-                        text: 'A',
+                        text: 'Reset',
+                        className: 'font-reset',
+                        onClick: resetFontSize
+                    },
+                    {
+                        text: 'A+',
                         className: 'font-enlarge',
                         onClick: enlargeFontSize
                     }
@@ -254,6 +268,7 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
     gitbook.fontsettings = {
         enlargeFontSize: enlargeFontSize,
         reduceFontSize:  reduceFontSize,
+        resetFontSize:   resetFontSize,
         setTheme:        changeColorTheme,
         setFamily:       changeFontFamily,
         getThemes:       getThemes,

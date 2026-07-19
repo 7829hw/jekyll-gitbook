@@ -24,6 +24,15 @@
     </script>
 
     <nav role="navigation">
+        <div class="summary-brand">
+            <a class="summary-brand-link" href="{{site.baseurl}}/" aria-label="{{ site.title | escape }} home">
+                <span class="summary-brand-mark" aria-hidden="true">M</span>
+                <span class="summary-brand-copy">
+                    <strong>{{ site.title | escape }}</strong>
+                    <small>Modern MCP field guide</small>
+                </span>
+            </a>
+        </div>
         <div id="book-search-input" role="search">
             <input type="text" placeholder="Type to search" />
         </div>

@@ -1,7 +1,7 @@
 <!-- Slightly Modified from _layouts/home.html -->
 
 <!DOCTYPE HTML>
-<html lang="en" >
+<html lang="{{ page.lang | default: 'en' }}">
     <head>
         {%- include head.html -%}
 
@@ -11,8 +11,8 @@
             <link rel="next" href="{{site.baseurl}}{{reversed_posts.first.url}}" />
         {% endif %}
     </head>
-    <body>
-        <div class="book">
+    <body class="layout-{{ page.layout | default: 'search-base' }}">
+        <div class="book layout-{{ page.layout | default: 'search-base' }}">
 
             {%- include toc-date.html -%}
 
@@ -31,26 +31,24 @@
 
                 <div class="body-inner">
                     <div class="page-wrapper" tabindex="-1" role="main">
-                        <div class="page-inner">
-                            <section class="normal markdown-section">
-                                {% if page.title %}
-                                    <h1 id="{{ page.id }}">{{ page.title | escape }}</h1>
-                                {% else %}
-                                    <h1 id="{{ page.id }}">{{ site.title | escape }}</h1>
-                                {% endif %}
-
-                                <br />
-                            </section>
-
-                            {{ content }}
-
-                            <div id="book-search-results">
-                                <div class="search-noresults">
-                                    
+                        <div class="page-inner layout-search-base">
+                            <section class="normal markdown-section search-page">
+                                <div class="search-page-heading">
+                                    <span>Book search</span>
+                                    <h1>Find anything in the guide</h1>
+                                    <p>Search across every English and Korean chapter.</p>
                                 </div>
-                    
-                                {%- include search.html -%}
-                            </div>
+
+                                {{ content }}
+
+                                <div id="book-search-results">
+                                    <div class="search-noresults">
+                                        <p class="search-hint">Enter a keyword above to begin.</p>
+                                    </div>
+
+                                    {%- include search.html -%}
+                                </div>
+                            </section>
                         </div>
                     </div>
                 </div>

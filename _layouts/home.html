@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" >
+<html lang="{{ page.lang | default: 'en' }}">
     <head>
 
         {%- include head.html -%}
@@ -10,8 +10,8 @@
             <link rel="next" href="{{site.baseurl}}{{reversed_posts.first.url}}" />
         {% endif %}
     </head>
-    <body>
-        <div class="book">
+    <body class="layout-{{ page.layout | default: 'home' }}">
+        <div class="book layout-{{ page.layout | default: 'home' }}">
 
             {%- include toc-date.html -%}
 

@@ -8,15 +8,17 @@
         />
     {% endif %}
 
-    <div class="page-inner">
+    <div class="page-inner layout-{{ page.layout | default: 'post' }}">
         <div id="book-search-results">
             <div class="search-noresults">
                 <section class="normal markdown-section">
-                    {% if page.title %}
-                        <h1 id="{{ page.id }}">{{ page.title | escape }}</h1>
-                    {% else %}
-                        <h1 id="{{ page.id }}">{{ site.title | escape }}</h1>
-                    {% endif %}
+                    {% unless page.layout == "home" or page.path contains "ai-agents-with-mcp" %}
+                        {% if page.title %}
+                            <h1 class="generated-page-title" id="{{ page.id }}">{{ page.title | escape }}</h1>
+                        {% else %}
+                            <h1 class="generated-page-title" id="{{ page.id }}">{{ site.title | escape }}</h1>
+                        {% endif %}
+                    {% endunless %}
 
                     {{ content }}
 
