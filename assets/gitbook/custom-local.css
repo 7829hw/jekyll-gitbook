@@ -5,7 +5,7 @@
     --font-family: var(--font-sans);
     --sidebar-width: 320px;
     --header-height: 64px;
-    --content-width: 920px;
+    --content-width: 1180px;
     --radius-sm: 3px;
     --radius-md: 5px;
     --radius-lg: 7px;
@@ -581,12 +581,12 @@ samp,
 
 .page-inner {
     max-width: var(--content-width) !important;
-    padding: 40px clamp(24px, 4vw, 52px) 96px;
+    padding: 40px clamp(20px, 3vw, 36px) 96px;
 }
 
 .book .book-body .page-wrapper .page-inner section.normal {
     overflow: visible;
-    padding: clamp(32px, 5vw, 56px);
+    padding: clamp(28px, 3vw, 40px);
     color: var(--text) !important;
     background: transparent !important;
     border: 0;
@@ -965,7 +965,7 @@ mark[data-markjs="true"] {
 
 /* Home */
 .page-inner.layout-home {
-    max-width: 1040px !important;
+    max-width: 1180px !important;
 }
 
 .page-inner.layout-home .markdown-section {
@@ -1215,11 +1215,11 @@ mark[data-markjs="true"] {
 
 @media (max-width: 700px) {
     .page-inner {
-        padding: 18px 14px 72px;
+        padding: 18px 8px 64px;
     }
 
     .book .book-body .page-wrapper .page-inner section.normal {
-        padding: 28px 22px;
+        padding: 24px 12px;
         border-radius: 0;
         box-shadow: none;
     }
