@@ -305,6 +305,10 @@ samp,
     transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
 }
 
+#book-search-input-link a {
+    display: block;
+}
+
 #book-search-input input::placeholder {
     color: var(--sidebar-muted);
 }
