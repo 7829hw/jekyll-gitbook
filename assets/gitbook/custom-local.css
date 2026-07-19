@@ -14,19 +14,19 @@
 }
 
 html {
-    background: #efede8;
+    background: #ffffff;
     scroll-behavior: smooth;
 }
 
 body {
     margin: 0;
-    background: #efede8;
+    background: #ffffff;
     font-family: var(--font-sans);
 }
 
 .book {
-    --canvas: #efede8;
-    --surface: #fbfaf7;
+    --canvas: #ffffff;
+    --surface: #ffffff;
     --surface-subtle: #f5f2ec;
     --surface-hover: #eeeae2;
     --text: #1d1c19;
@@ -35,7 +35,7 @@ body {
     --accent: #765936;
     --accent-strong: #4d3822;
     --accent-soft: #eee6da;
-    --header-bg: rgba(251, 250, 247, 0.96);
+    --header-bg: rgba(255, 255, 255, 0.96);
     --highlight-bg: #ead9ad;
     --highlight-text: #30271d;
     --hero-bg: #23231f;
@@ -43,12 +43,12 @@ body {
     --hero-muted: #c8c1b4;
     --hero-accent: #c1a470;
     --hero-line: rgba(246, 242, 232, 0.15);
-    --sidebar-bg: #f5f3ee;
+    --sidebar-bg: #ffffff;
     --sidebar-surface: #ece8e0;
     --sidebar-text: #37342f;
     --sidebar-muted: #777168;
     --sidebar-line: #dad5cc;
-    --sidebar-fade: rgba(245, 243, 238, 0);
+    --sidebar-fade: rgba(255, 255, 255, 0);
     --sidebar-brand-text: #25231f;
     --sidebar-brand-mark-text: #f7f3ea;
     --sidebar-hover-bg: #ece8e0;
