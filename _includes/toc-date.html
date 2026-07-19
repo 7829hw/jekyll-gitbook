@@ -1,9 +1,12 @@
 <div class="book-summary">
     <script type="text/javascript">
         // Fixes the page links scroll problem on both desktop and mobile browsers
+        function getBookScrollTarget() {
+            return $(document).width() <= 600 ? $('html, body') : $('div.body-inner');
+        }
+
         function pageScrollToTop(element) {
-            // both mobile and non-mobile
-            $('div.body-inner').animate({scrollTop: 0});
+            getBookScrollTarget().animate({scrollTop: 0});
             $(element).parent().find('li>ul>li').removeClass('active');
             return true;  // propagate
         }
@@ -12,10 +15,13 @@
             $(element).closest('li.chapter').find('ul>li').removeClass('active');
             $(element).parent().addClass('active');
             if ($(document).width() <= 1240) {
-                let target = $($(element).attr('href'));
+                var target = $($(element).attr('href'));
                 if (target.length) {
-                    $('div.body-inner').animate({
-                        scrollTop: target.get(0).offsetTop,
+                    var scrollTop = $(document).width() <= 600
+                        ? target.offset().top
+                        : target.get(0).offsetTop;
+                    getBookScrollTarget().animate({
+                        scrollTop: scrollTop,
                     });
                 }
             }

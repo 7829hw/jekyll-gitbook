@@ -1,111 +1,95 @@
 require(['gitbook', 'jquery'], function(gitbook, $) {
-    var HEADER_SCROLL_NAMESPACE = '.autoHideHeader',
-        HEADER_TOP_THRESHOLD = 12,
-        HEADER_DIRECTION_THRESHOLD = 10,
-        keyboardInputActive = false,
-        requestFrame = window.requestAnimationFrame
-            ? window.requestAnimationFrame.bind(window)
-            : function(callback) { return window.setTimeout(callback, 16); };
+    var MOBILE_SIDEBAR_NAMESPACE = '.mobileSidebarDismiss';
+    var MOBILE_SCROLL_NAMESPACE = '.mobileDocumentScroll';
 
-    function showHeader($book) {
-        $book.removeClass('is-header-hidden');
+    function isMobile() {
+        return $(document).width() <= 600;
     }
 
-    function hideHeader($book) {
-        var $header = $book.find('.book-header');
+    function scrollMobileDocumentToHash(hash, animate) {
+        if (!isMobile() || !hash) return;
 
-        if (keyboardInputActive && $header.find(':focus').length) return;
+        var id;
+        try {
+            id = decodeURIComponent(hash.substring(1));
+        } catch (error) {
+            id = hash.substring(1);
+        }
 
-        $header.find('.dropdown-menu.open').removeClass('open');
-        $book.addClass('is-header-hidden');
+        var target = document.getElementById(id);
+        if (!target) return;
+
+        var top = Math.max(0, $(target).offset().top);
+        if (animate) {
+            $('html, body').stop().animate({scrollTop: top}, 300);
+        } else {
+            window.scrollTo(0, top);
+        }
     }
 
-    function bindHeaderAutoHide() {
+    function bindMobileDocumentAnchors() {
+        $(document)
+            .off('click' + MOBILE_SCROLL_NAMESPACE, '.page-inner a[href*="#"], .book-summary a[href*="#"]')
+            .on('click' + MOBILE_SCROLL_NAMESPACE, '.page-inner a[href*="#"], .book-summary a[href*="#"]', function() {
+                if (!isMobile()) return;
+
+                var link = document.createElement('a');
+                link.href = this.href;
+                if (link.pathname !== window.location.pathname || !link.hash) return;
+
+                scrollMobileDocumentToHash(link.hash, true);
+            });
+    }
+
+    function bindMobileSidebarDismiss() {
         var $book = gitbook.state.$book && gitbook.state.$book.length
             ? gitbook.state.$book
             : $('.book');
-        var $scrollContainers = $book.find('.book-body, .body-inner');
 
-        showHeader($book);
+        $book.find('.book-body')
+            .off('click' + MOBILE_SIDEBAR_NAMESPACE)
+            .on('click' + MOBILE_SIDEBAR_NAMESPACE, function(event) {
+                if ($(event.target).closest('.js-toggle-summary').length ||
+                    $(document).width() > 600 ||
+                    !gitbook.sidebar ||
+                    !gitbook.sidebar.isOpen()) return;
 
-        $(document)
-            .off('keydown' + HEADER_SCROLL_NAMESPACE)
-            .on('keydown' + HEADER_SCROLL_NAMESPACE, function() {
-                keyboardInputActive = true;
-            })
-            .off('pointerdown' + HEADER_SCROLL_NAMESPACE +
-                ' mousedown' + HEADER_SCROLL_NAMESPACE +
-                ' touchstart' + HEADER_SCROLL_NAMESPACE +
-                ' wheel' + HEADER_SCROLL_NAMESPACE)
-            .on('pointerdown' + HEADER_SCROLL_NAMESPACE +
-                ' mousedown' + HEADER_SCROLL_NAMESPACE +
-                ' touchstart' + HEADER_SCROLL_NAMESPACE +
-                ' wheel' + HEADER_SCROLL_NAMESPACE, function() {
-                keyboardInputActive = false;
-            });
-
-        $scrollContainers
-            .off('scroll' + HEADER_SCROLL_NAMESPACE)
-            .each(function() {
-                var $container = $(this);
-                var previousScrollTop = Math.max(0, $container.scrollTop());
-                var directionDistance = 0;
-                var framePending = false;
-
-                $container.on('scroll' + HEADER_SCROLL_NAMESPACE, function() {
-                    if (framePending) return;
-                    framePending = true;
-
-                    requestFrame(function() {
-                        var currentScrollTop = Math.max(0, $container.scrollTop());
-                        var delta = currentScrollTop - previousScrollTop;
-
-                        if (currentScrollTop <= HEADER_TOP_THRESHOLD) {
-                            showHeader($book);
-                            directionDistance = 0;
-                        } else if (delta !== 0) {
-                            if ((delta > 0 && directionDistance < 0) ||
-                                (delta < 0 && directionDistance > 0)) {
-                                directionDistance = 0;
-                            }
-
-                            directionDistance += delta;
-
-                            if (directionDistance >= HEADER_DIRECTION_THRESHOLD) {
-                                hideHeader($book);
-                                directionDistance = 0;
-                            } else if (directionDistance <= -HEADER_DIRECTION_THRESHOLD) {
-                                showHeader($book);
-                                directionDistance = 0;
-                            }
-                        }
-
-                        previousScrollTop = currentScrollTop;
-                        framePending = false;
-                    });
-                });
-            });
-
-        $book.find('.book-header')
-            .off('focusin' + HEADER_SCROLL_NAMESPACE)
-            .on('focusin' + HEADER_SCROLL_NAMESPACE, function() {
-                showHeader($book);
+                event.preventDefault();
+                event.stopPropagation();
+                gitbook.sidebar.toggle(false);
             });
     }
 
     function enhanceLayout() {
+        var $bodyInner = $('.body-inner');
+
         $('.markdown-section table').each(function() {
             if (!$(this).parent().hasClass('table-wrapper')) {
                 $(this).wrap('<div class="table-wrapper"></div>');
             }
         });
 
-        $('.book-header .fa-align-justify').parent().attr('aria-label', 'Toggle navigation');
+        $('.book-header .fa-align-justify').parent()
+            .addClass('js-toggle-summary')
+            .attr('aria-label', 'Toggle navigation');
         $('.book-header .fa-facebook').parent().attr('aria-label', 'Share on Facebook');
         $('.book-header .fa-twitter').parent().attr('aria-label', 'Share on X');
         $('.book-header .fa-github').parent().attr('aria-label', 'Open GitHub');
 
-        bindHeaderAutoHide();
+        bindMobileSidebarDismiss();
+        bindMobileDocumentAnchors();
+
+        if (isMobile()) {
+            window.requestAnimationFrame(function() {
+                if (window.location.hash) {
+                    scrollMobileDocumentToHash(window.location.hash, false);
+                } else {
+                    window.scrollTo(0, 0);
+                }
+            });
+        } else if (!window.location.hash) {
+            $bodyInner.scrollTop(0);
+        }
     }
 
     gitbook.events.bind('page.change', enhanceLayout);
