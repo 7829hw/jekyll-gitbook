@@ -784,6 +784,101 @@ samp,
     font-size: 0.84em;
 }
 
+/*
+ * Rouge's bundled "colorful" stylesheet is designed for a white canvas, while
+ * this site uses a dark code canvas.  Reset its own background and provide a
+ * high-contrast syntax palette so every token remains legible in every theme.
+ */
+.book .book-body .page-wrapper .page-inner section.normal .highlighter-rouge,
+.book .book-body .page-wrapper .page-inner section.normal .highlight {
+    color: var(--code-text) !important;
+    background: transparent !important;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal .highlight .c,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .ch,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .cd,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .cm,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .cpf,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .c1,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .cs,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .go {
+    color: #a7b0bd !important;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal .highlight .k,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .kc,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .kd,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .kn,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .kp,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .kr,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .kt,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .kv {
+    color: #d9a4f5 !important;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal .highlight .s,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .sb,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .sc,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .dl,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .sd,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .s1,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .s2,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .sa,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .se,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .sh,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .si,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .sr,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .ss,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .sx {
+    color: #a8d992 !important;
+    background: transparent !important;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal .highlight .m,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .mb,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .mf,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .mh,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .mi,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .il,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .mo {
+    color: #f0bd7a !important;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal .highlight .nf,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .fm,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .nb,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .bp {
+    color: #82c7ff !important;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal .highlight .na,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .nc,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .nd,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .ne,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .nn,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .no,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .nt,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .nv,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .vc,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .vg,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .vi,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .vm {
+    color: #f2a6a6 !important;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal .highlight .o,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .ow,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .p,
+.book .book-body .page-wrapper .page-inner section.normal .highlight .pi {
+    color: #91d5d4 !important;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal .highlight .err {
+    color: #ffffff !important;
+    background: #b8424b !important;
+}
+
 .book .book-body .page-wrapper .page-inner section.normal pre:has(code.language-mermaid[data-processed="true"]) {
     padding: 18px;
     color: #1d1c19 !important;
