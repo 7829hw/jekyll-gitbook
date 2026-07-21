@@ -789,13 +789,13 @@ samp,
  * this site uses a dark code canvas.  Reset its own background and provide a
  * high-contrast syntax palette so every token remains legible in every theme.
  */
-.book .book-body .page-wrapper .page-inner section.normal .highlighter-rouge,
-.book .book-body .page-wrapper .page-inner section.normal .highlighter-rouge > .highlight {
+.book .book-body .page-wrapper .page-inner section.normal div.highlighter-rouge,
+.book .book-body .page-wrapper .page-inner section.normal div.highlighter-rouge > .highlight {
     color: var(--code-text) !important;
     background: transparent !important;
 }
 
-.book .book-body .page-wrapper .page-inner section.normal .highlighter-rouge pre,
+.book .book-body .page-wrapper .page-inner section.normal div.highlighter-rouge pre,
 .book .book-body .page-wrapper .page-inner section.normal pre.highlight {
     color: var(--code-text) !important;
     background: var(--code-bg) !important;
