@@ -417,19 +417,6 @@ samp,
     color: var(--sidebar-muted);
 }
 
-.divider-content-summary {
-    right: -3px;
-    width: 7px;
-    color: transparent;
-    background: linear-gradient(to right, transparent 3px, var(--sidebar-line) 3px, var(--sidebar-line) 4px, transparent 4px);
-    transition: background 150ms ease;
-}
-
-.divider-content-summary:hover {
-    color: transparent;
-    background: var(--accent);
-}
-
 /* Application shell and toolbar */
 .book-body {
     color: var(--text) !important;
@@ -1427,10 +1414,6 @@ mark[data-markjs="true"] {
         overflow-x: hidden;
         overflow-y: auto;
         box-shadow: var(--sidebar-mobile-shadow);
-    }
-
-    .divider-content-summary {
-        display: none;
     }
 
     .book.with-summary .book-body {
