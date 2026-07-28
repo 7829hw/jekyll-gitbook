@@ -65,33 +65,6 @@
     max-width: {{ site.page_width | default: '800px' }};
 }
 
-.back-to-top {
-    right: calc((100% - 300px - min(100% - 300px, {{ site.page_width | default: '800px' }})) / 2 + 25px);
-}
-
-/* scrollbar */
-::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-}
-
-::-webkit-scrollbar-track-piece {
-    /* background-color: rgba(125, 125, 125, 0.2); */
-    -webkit-border-radius: 6px;
-}
-
-::-webkit-scrollbar-thumb:vertical {
-    height: 5px;
-    background-color: rgba(7, 17, 27, .2);
-    -webkit-border-radius: 6px;
-}
-
-::-webkit-scrollbar-thumb:horizontal {
-    width: 5px;
-    background-color: rgba(125, 125, 125, 0.2);
-    -webkit-border-radius: 6px;
-}
-
 /* Style for search page on mobile screens */
 
 #book-search-input-link {

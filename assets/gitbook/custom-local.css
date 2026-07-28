@@ -201,6 +201,8 @@ samp,
 
 /* Sidebar */
 .book-summary {
+    position: fixed;
+    z-index: 100;
     left: calc(0px - var(--sidebar-width));
     width: var(--sidebar-width);
     color: var(--sidebar-text) !important;
@@ -415,12 +417,6 @@ samp,
     color: var(--sidebar-muted);
 }
 
-.book-summary::-webkit-scrollbar-thumb {
-    background: var(--sidebar-scroll-thumb) !important;
-    border: 2px solid transparent;
-    background-clip: padding-box !important;
-}
-
 .divider-content-summary {
     right: -3px;
     width: 7px;
@@ -459,6 +455,51 @@ samp,
 .book.with-summary .book-body .body-inner {
     margin-top: 0;
     min-height: 100%;
+}
+
+/* Use the browser viewport as the page's only scrolling surface. */
+html,
+body {
+    height: auto !important;
+    min-height: 100%;
+}
+
+html {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body {
+    overflow: visible;
+}
+
+.book {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+}
+
+.book .book-body,
+.book.with-summary .book-body {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: 0;
+    min-height: 100vh;
+    overflow-x: visible;
+    overflow-y: visible;
+}
+
+.book .book-body .body-inner,
+.book.with-summary .book-body .body-inner {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    overflow-x: visible;
+    overflow-y: visible;
 }
 
 .book-header .btn {
@@ -1225,30 +1266,44 @@ mark[data-markjs="true"] {
     transform: none;
 }
 
-.back-to-top,
-.book.color-theme-1 .back-to-top,
-.book.color-theme-2 .back-to-top {
+.sidebar-fab {
+    position: fixed;
     right: 24px;
     bottom: 24px;
-    width: 40px;
-    height: 40px;
-    background: var(--text) !important;
+    z-index: 110;
+    display: grid;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    place-items: center;
+    color: var(--surface);
+    background: var(--text);
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
-    box-shadow: none;
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(12px);
+    transition: color 150ms ease, background 150ms ease, border-color 150ms ease, opacity 180ms ease, transform 180ms ease;
 }
 
-.back-to-top i,
-.book.color-theme-1 .back-to-top i,
-.book.color-theme-2 .back-to-top i {
-    top: 9px;
-    left: 10px;
+.sidebar-fab.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.sidebar-fab:hover,
+.sidebar-fab:focus-visible,
+.sidebar-fab.is-open {
     color: var(--surface);
-    font-size: 18px;
+    background: var(--accent);
+    border-color: var(--accent);
 }
 
-.back-to-top:hover {
-    background: var(--accent) !important;
+.sidebar-fab i {
+    font-size: 17px;
 }
 
 .book a:focus-visible,
@@ -1259,37 +1314,16 @@ mark[data-markjs="true"] {
     outline-offset: 2px;
 }
 
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgba(112, 107, 98, 0.34) !important;
-    border: 2px solid transparent;
-    border-radius: var(--radius-md) !important;
-    background-clip: padding-box !important;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: rgba(112, 107, 98, 0.55) !important;
-    background-clip: padding-box !important;
-}
-
 @media (min-width: 601px) {
     .book.with-summary .book-body {
-        left: var(--sidebar-width);
+        left: 0;
     }
 }
 
 @media (max-width: 1240px) {
     .book-body .body-inner,
     .book.with-summary .book-body .body-inner {
-        position: absolute;
+        position: relative;
         margin-top: 0;
         min-height: 100%;
     }
@@ -1345,7 +1379,14 @@ mark[data-markjs="true"] {
         height: auto !important;
         min-height: 100%;
         overflow-x: hidden;
+    }
+
+    html {
         overflow-y: auto;
+    }
+
+    body {
+        overflow-y: visible;
     }
 
     .book {
@@ -1394,7 +1435,7 @@ mark[data-markjs="true"] {
 
     .book.with-summary .book-body {
         left: 0;
-        transform: translate(calc(100% - 60px), 0);
+        transform: none;
     }
 
     .summary-brand {
@@ -1438,7 +1479,7 @@ mark[data-markjs="true"] {
     .book-summary,
     .book-header,
     .navigation,
-    .back-to-top,
+    .sidebar-fab,
     .copy-code-button {
         display: none !important;
     }
