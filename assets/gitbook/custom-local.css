@@ -483,8 +483,12 @@ samp,
     transform: none;
 }
 
-.book-header > a.btn.pull-right {
-    display: none;
+/* Keep header toolbar buttons visible */
+.book-header > a.btn.pull-right,
+.js-toolbar-action {
+    display: inline-block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 /* Modern sidebar toggle button - Bottom Right Floating Action Button */
