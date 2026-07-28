@@ -77,16 +77,23 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
         $fab.on('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            // Try multiple methods to toggle sidebar
-            if (gitbook.sidebar && gitbook.sidebar.toggle) {
-                gitbook.sidebar.toggle();
-            } else if ($('.book').hasClass('with-summary')) {
-                $('.book').removeClass('with-summary');
-                $fab.html('<i class="fa fa-bars"></i>');
+            
+            // Get current sidebar state
+            var isOpen = false;
+            if (gitbook.sidebar && gitbook.sidebar.isOpen) {
+                isOpen = gitbook.sidebar.isOpen();
             } else {
-                $('.book').addClass('with-summary');
-                $fab.html('<i class="fa fa-times"></i>');
+                isOpen = $('.book').hasClass('with-summary');
             }
+            
+            // Toggle sidebar using gitbook API
+            if (gitbook.sidebar && gitbook.sidebar.toggle) {
+                gitbook.sidebar.toggle(!isOpen);
+            } else {
+                // Fallback: manually toggle class
+                $('.book').toggleClass('with-summary');
+            }
+            
             // Update icon after short delay
             setTimeout(function() {
                 updateIcon();
