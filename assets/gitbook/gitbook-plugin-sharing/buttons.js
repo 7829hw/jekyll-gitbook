@@ -83,12 +83,13 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
 
         // Create main button with dropdown
         if (menu.length > 0) {
-            gitbook.toolbar.createButton({
-                icon: 'fa fa-share-alt',
-                label: 'Share',
-                position: 'right',
-                dropdown: [menu]
-            });
+            // 공유 버튼 제거
+            // gitbook.toolbar.createButton({
+            //     icon: 'fa fa-share-alt',
+            //     label: 'Share',
+            //     position: 'right',
+            //     dropdown: [menu]
+            // });
         }
 
         // Direct actions to share
@@ -106,12 +107,13 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
                 }
             }
 
-            gitbook.toolbar.createButton({
-                icon: site.icon,
-                label: site.text,
-                position: 'right',
-                onClick: onClick
-            });
+            // 공유 버튼 제거
+            // gitbook.toolbar.createButton({
+            //     icon: site.icon,
+            //     label: site.text,
+            //     position: 'right',
+            //     onClick: onClick
+            // });
         });
     });
 });
