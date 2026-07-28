@@ -415,11 +415,13 @@ samp,
     color: var(--sidebar-muted);
 }
 
+/* scrollbar removed to use browser default
 .book-summary::-webkit-scrollbar-thumb {
     background: var(--sidebar-scroll-thumb) !important;
     border: 2px solid transparent;
     background-clip: padding-box !important;
 }
+*/
 
 .divider-content-summary {
     right: -3px;
@@ -1259,6 +1261,7 @@ mark[data-markjs="true"] {
     outline-offset: 2px;
 }
 
+/* scrollbar removed to use browser default
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -1279,6 +1282,7 @@ mark[data-markjs="true"] {
     background: rgba(112, 107, 98, 0.55) !important;
     background-clip: padding-box !important;
 }
+*/
 
 @media (min-width: 601px) {
     .book.with-summary .book-body {
