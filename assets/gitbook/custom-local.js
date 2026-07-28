@@ -126,7 +126,7 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
         $book.find('.book-body')
             .off('click' + MOBILE_SIDEBAR_NAMESPACE)
             .on('click' + MOBILE_SIDEBAR_NAMESPACE, function(event) {
-                if ($(event.target).closest('.js-toggle-summary').length ||
+                if ($(event.target).closest('.js-toolbar-action').length ||
                     !isMobile() ||
                     !gitbook.sidebar ||
                     !gitbook.sidebar.isOpen()) return;
