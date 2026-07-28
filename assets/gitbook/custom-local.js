@@ -50,6 +50,7 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
             .off('click' + MOBILE_SIDEBAR_NAMESPACE)
             .on('click' + MOBILE_SIDEBAR_NAMESPACE, function(event) {
                 if ($(event.target).closest('.js-toggle-summary').length ||
+                    $(event.target).closest('.sidebar-toggle-fab').length ||
                     $(document).width() > 600 ||
                     !gitbook.sidebar ||
                     !gitbook.sidebar.isOpen()) return;
@@ -58,6 +59,42 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
                 event.stopPropagation();
                 gitbook.sidebar.toggle(false);
             });
+    }
+
+    // Create modern floating sidebar toggle button
+    function createFloatingToggleButton() {
+        // Remove existing FAB if any
+        $('.sidebar-toggle-fab').remove();
+
+        var $fab = $('<a>', {
+            'class': 'sidebar-toggle-fab',
+            'href': '#',
+            'aria-label': 'Toggle sidebar navigation',
+            'title': 'Toggle sidebar (S)',
+            'role': 'button'
+        }).html('<i class="fa fa-bars"></i>');
+
+        $fab.on('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (gitbook.sidebar) {
+                gitbook.sidebar.toggle();
+            }
+        });
+
+        $('body').append($fab);
+
+        // Update icon based on sidebar state
+        function updateIcon() {
+            var isOpen = gitbook.sidebar && gitbook.sidebar.isOpen();
+            $fab.html(isOpen ? '<i class="fa fa-times"></i>' : '<i class="fa fa-bars"></i>');
+        }
+
+        // Listen for sidebar changes
+        gitbook.events.on('sidebar.toggle', updateIcon);
+        
+        // Initial icon state
+        setTimeout(updateIcon, 100);
     }
 
     function enhanceLayout() {
@@ -75,6 +112,9 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
         $('.book-header .fa-facebook').parent().attr('aria-label', 'Share on Facebook');
         $('.book-header .fa-twitter').parent().attr('aria-label', 'Share on X');
         $('.book-header .fa-github').parent().attr('aria-label', 'Open GitHub');
+
+        // Create the modern floating toggle button
+        createFloatingToggleButton();
 
         bindMobileSidebarDismiss();
         bindMobileDocumentAnchors();

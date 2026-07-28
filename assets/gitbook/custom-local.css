@@ -487,6 +487,71 @@ samp,
     display: none;
 }
 
+/* Modern sidebar toggle button - Bottom Right Floating Action Button */
+.sidebar-toggle-fab {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    color: var(--text-muted) !important;
+    background: var(--surface) !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 50%;
+    box-shadow: var(--shadow-md);
+    line-height: 48px;
+    text-align: center;
+    z-index: 100;
+    cursor: pointer;
+    transition: all 200ms ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+}
+
+.sidebar-toggle-fab:hover,
+.sidebar-toggle-fab:focus-visible {
+    color: var(--accent) !important;
+    background: var(--accent-soft) !important;
+    border-color: var(--accent) !important;
+    transform: translateY(0);
+    box-shadow: 0 8px 24px rgba(31, 26, 20, 0.12);
+}
+
+/* Show FAB when sidebar is closed on mobile/tablet */
+@media (max-width: 1240px) {
+    .sidebar-toggle-fab {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .book.with-summary .sidebar-toggle-fab {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* Desktop: always show FAB for convenience */
+@media (min-width: 1241px) {
+    .sidebar-toggle-fab {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        width: 42px;
+        height: 42px;
+        line-height: 42px;
+        right: 20px;
+        bottom: 20px;
+    }
+    
+    .sidebar-toggle-fab:hover,
+    .sidebar-toggle-fab:focus-visible {
+        transform: scale(1.05);
+    }
+}
+
 .book-header h1 {
     display: block !important;
     height: var(--header-height);
