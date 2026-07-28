@@ -77,24 +77,46 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
         $fab.on('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            if (gitbook.sidebar) {
+            // Try multiple methods to toggle sidebar
+            if (gitbook.sidebar && gitbook.sidebar.toggle) {
                 gitbook.sidebar.toggle();
+            } else if ($('.book').hasClass('with-summary')) {
+                $('.book').removeClass('with-summary');
+                $fab.html('<i class="fa fa-bars"></i>');
+            } else {
+                $('.book').addClass('with-summary');
+                $fab.html('<i class="fa fa-times"></i>');
             }
+            // Update icon after short delay
+            setTimeout(function() {
+                updateIcon();
+            }, 50);
         });
 
         $('body').append($fab);
 
         // Update icon based on sidebar state
         function updateIcon() {
-            var isOpen = gitbook.sidebar && gitbook.sidebar.isOpen();
+            var isOpen = false;
+            if (gitbook.sidebar && gitbook.sidebar.isOpen) {
+                isOpen = gitbook.sidebar.isOpen();
+            } else {
+                isOpen = $('.book').hasClass('with-summary');
+            }
             $fab.html(isOpen ? '<i class="fa fa-times"></i>' : '<i class="fa fa-bars"></i>');
         }
 
-        // Listen for sidebar changes
-        gitbook.events.on('sidebar.toggle', updateIcon);
-        
-        // Initial icon state
+        // Listen for sidebar changes - use bind instead of on for compatibility
+        if (gitbook.events && gitbook.events.bind) {
+            gitbook.events.bind('sidebar.toggle', updateIcon);
+        }
+
+        // Initial icon state and periodic updates
         setTimeout(updateIcon, 100);
+        setTimeout(updateIcon, 500);
+        setTimeout(updateIcon, 1000);
+        // Also update on window resize
+        $(window).on('resize', updateIcon);
     }
 
     function enhanceLayout() {
