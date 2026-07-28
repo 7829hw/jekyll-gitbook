@@ -65,9 +65,7 @@
     max-width: {{ site.page_width | default: '800px' }};
 }
 
-.back-to-top {
-    right: calc((100% - 300px - min(100% - 300px, {{ site.page_width | default: '800px' }})) / 2 + 25px);
-}
+/* Back to top button removed - using sidebar toggle FAB instead */
 
 /* scrollbar - removed to use browser default
 ::-webkit-scrollbar {

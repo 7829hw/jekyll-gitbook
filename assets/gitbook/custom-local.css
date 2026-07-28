@@ -492,22 +492,22 @@ samp,
     position: fixed;
     right: 24px;
     bottom: 24px;
-    width: 48px;
-    height: 48px;
+    width: 56px;
+    height: 56px;
     padding: 0;
     color: var(--text-muted) !important;
     background: var(--surface) !important;
     border: 1px solid var(--line) !important;
     border-radius: 50%;
     box-shadow: var(--shadow-md);
-    line-height: 48px;
+    line-height: 56px;
     text-align: center;
     z-index: 100;
     cursor: pointer;
     transition: all 200ms ease;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .sidebar-toggle-fab:hover,
@@ -515,41 +515,13 @@ samp,
     color: var(--accent) !important;
     background: var(--accent-soft) !important;
     border-color: var(--accent) !important;
-    transform: translateY(0);
+    transform: scale(1.08);
     box-shadow: 0 8px 24px rgba(31, 26, 20, 0.12);
 }
 
-/* Show FAB when sidebar is closed on mobile/tablet */
-@media (max-width: 1240px) {
-    .sidebar-toggle-fab {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-    
-    .book.with-summary .sidebar-toggle-fab {
-        opacity: 0;
-        visibility: hidden;
-    }
-}
-
-/* Desktop: always show FAB for convenience */
-@media (min-width: 1241px) {
-    .sidebar-toggle-fab {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-        width: 42px;
-        height: 42px;
-        line-height: 42px;
-        right: 20px;
-        bottom: 20px;
-    }
-    
-    .sidebar-toggle-fab:hover,
-    .sidebar-toggle-fab:focus-visible {
-        transform: scale(1.05);
-    }
+.sidebar-toggle-fab i {
+    font-size: 22px;
+    line-height: 56px;
 }
 
 .book-header h1 {
@@ -1292,31 +1264,7 @@ mark[data-markjs="true"] {
     transform: none;
 }
 
-.back-to-top,
-.book.color-theme-1 .back-to-top,
-.book.color-theme-2 .back-to-top {
-    right: 24px;
-    bottom: 24px;
-    width: 40px;
-    height: 40px;
-    background: var(--text) !important;
-    border: 1px solid var(--line);
-    border-radius: var(--radius-md);
-    box-shadow: none;
-}
-
-.back-to-top i,
-.book.color-theme-1 .back-to-top i,
-.book.color-theme-2 .back-to-top i {
-    top: 9px;
-    left: 10px;
-    color: var(--surface);
-    font-size: 18px;
-}
-
-.back-to-top:hover {
-    background: var(--accent) !important;
-}
+/* Back to top button styles removed - replaced with sidebar toggle FAB */
 
 .book a:focus-visible,
 .book button:focus-visible,
@@ -1507,7 +1455,6 @@ mark[data-markjs="true"] {
     .book-summary,
     .book-header,
     .navigation,
-    .back-to-top,
     .copy-code-button {
         display: none !important;
     }
