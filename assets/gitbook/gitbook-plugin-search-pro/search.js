@@ -190,7 +190,6 @@ require([
         bindSearch('#book-search-input-inside input');
 
         showResult();
-        closeSearch();
     });
 
     // 高亮文本
@@ -217,10 +216,13 @@ require([
             if (type === 'q') {
                 launchSearch(keyword);
             } else {
+                closeSearch();
                 highLightPageInner(keyword);
             }
             $('#book-search-input input').val(keyword);
             $('#book-search-input-inside input').val(keyword);
+        } else {
+            closeSearch();
         }
     }
 
