@@ -4,6 +4,7 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
     var SIDEBAR_FAB_NAMESPACE = '.sidebarFab';
     var lastScrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
     var scrollTicking = false;
+    var hasInitializedSidebarState = false;
 
     function isMobile() {
         return $(document).width() <= 600;
@@ -149,8 +150,11 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
             .addClass('js-toggle-summary')
             .attr('aria-label', 'Toggle navigation');
 
-        if (gitbook.sidebar) {
-            gitbook.sidebar.toggle(false, false);
+        if (!hasInitializedSidebarState) {
+            hasInitializedSidebarState = true;
+            if (gitbook.sidebar) {
+                gitbook.sidebar.toggle(false, false);
+            }
         }
         bindSidebarFab();
         bindMobileSidebarDismiss();
