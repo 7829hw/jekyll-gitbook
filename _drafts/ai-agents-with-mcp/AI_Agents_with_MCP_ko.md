@@ -1507,8 +1507,8 @@ Return a JSON array of prompt objects which have a name (string) and arguments (
 keys are the named parameter name and value is the argument value), or an empty array if no prompts
 are needed. Only include prompts that are directly relevant.
 
-Example: [{{"name": "calculation-helper", "arguments": {{"operation": "addition"}}]}},
- {{"name": "step-by-step-math", "arguments": {{}}}}] or []
+{% raw %}Example: [{{"name": "calculation-helper", "arguments": {{"operation": "addition"}}]}},
+ {{"name": "step-by-step-math", "arguments": {{}}}}] or []{% endraw %}
 """
 
         try:

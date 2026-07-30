@@ -1,7 +1,5 @@
 ---
 title: '간략 목차(*미확정*)'
-author: Kyle Stratis
-layout: post
 permalink: /AI_Agent_with_MCP/ko/index.html
 lang: ko
 book_order: 0

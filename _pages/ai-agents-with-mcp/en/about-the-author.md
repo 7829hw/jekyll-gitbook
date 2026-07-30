@@ -1,7 +1,5 @@
 ---
 title: 'About the Author'
-author: Kyle Stratis
-layout: post
 permalink: /AI_Agent_with_MCP/about_the_author.html
 lang: en
 book_order: 8

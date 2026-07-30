@@ -1,7 +1,5 @@
 ---
 title: '2장. 모델 컨텍스트 프로토콜 소개'
-author: Kyle Stratis
-layout: post
 permalink: /AI_Agent_with_MCP/ko/chapter_2.html
 lang: ko
 book_order: 2

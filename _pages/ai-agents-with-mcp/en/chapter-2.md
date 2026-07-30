@@ -1,7 +1,5 @@
 ---
 title: 'Chapter 2. An Introduction to the Model Context Protocol'
-author: Kyle Stratis
-layout: post
 permalink: /AI_Agent_with_MCP/chapter_2.html
 lang: en
 book_order: 2

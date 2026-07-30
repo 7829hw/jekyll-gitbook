@@ -1,7 +1,5 @@
 ---
 title: '4장. MCP 클라이언트: 고급 활용과 모범 사례'
-author: Kyle Stratis
-layout: post
 permalink: /AI_Agent_with_MCP/ko/chapter_4.html
 lang: ko
 book_order: 4

@@ -1,7 +1,5 @@
 ---
 title: '저자 소개'
-author: Kyle Stratis
-layout: post
 permalink: /AI_Agent_with_MCP/ko/about_the_author.html
 lang: ko
 book_order: 8

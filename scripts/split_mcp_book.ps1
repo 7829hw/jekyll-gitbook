@@ -19,8 +19,6 @@ function Get-FrontMatter {
     return @" 
 ---
 title: '$safeTitle'
-author: Kyle Stratis
-layout: post
 permalink: $Permalink
 lang: $Language
 book_order: $Order
@@ -46,17 +44,17 @@ foreach ($match in $matches) {
     }
 
     if ($sourceName -eq 'brief_table_of_contents.md') {
-        $outputName = 'brief_table_of_contents_ko.md'
+        $outputName = 'index.md'
         $permalink = '/AI_Agent_with_MCP/ko/index.html'
     }
     elseif ($sourceName -eq 'about_the_author.md') {
-        $outputName = 'about_the_author_ko.md'
+        $outputName = 'about-the-author.md'
         $permalink = '/AI_Agent_with_MCP/ko/about_the_author.html'
         $order = 8
     }
     else {
         $chapterNumber = [regex]::Match($sourceName, 'chapter_(\d+)\.md').Groups[1].Value
-        $outputName = "chapter_${chapterNumber}_ko.md"
+        $outputName = "chapter-${chapterNumber}.md"
         $permalink = "/AI_Agent_with_MCP/ko/chapter_${chapterNumber}.html"
         $order = [int]$chapterNumber
     }
@@ -69,15 +67,15 @@ foreach ($match in $matches) {
 }
 
 $englishFiles = @(
-    @{ Name = 'brief_table_of_contents.md'; Permalink = '/AI_Agent_with_MCP/index.html'; Order = 0 },
-    @{ Name = 'chapter_1.md'; Permalink = '/AI_Agent_with_MCP/chapter_1.html'; Order = 1 },
-    @{ Name = 'chapter_2.md'; Permalink = '/AI_Agent_with_MCP/chapter_2.html'; Order = 2 },
-    @{ Name = 'chapter_3.md'; Permalink = '/AI_Agent_with_MCP/chapter_3.html'; Order = 3 },
-    @{ Name = 'chapter_4.md'; Permalink = '/AI_Agent_with_MCP/chapter_4.html'; Order = 4 },
-    @{ Name = 'chapter_5.md'; Permalink = '/AI_Agent_with_MCP/chapter_5.html'; Order = 5 },
-    @{ Name = 'chapter_6.md'; Permalink = '/AI_Agent_with_MCP/chapter_6.html'; Order = 6 },
-    @{ Name = 'chapter_7.md'; Permalink = '/AI_Agent_with_MCP/chapter_7.html'; Order = 7 },
-    @{ Name = 'about_the_author.md'; Permalink = '/AI_Agent_with_MCP/about_the_author.html'; Order = 8 }
+    @{ Name = 'index.md'; Permalink = '/AI_Agent_with_MCP/index.html'; Order = 0 },
+    @{ Name = 'chapter-1.md'; Permalink = '/AI_Agent_with_MCP/chapter_1.html'; Order = 1 },
+    @{ Name = 'chapter-2.md'; Permalink = '/AI_Agent_with_MCP/chapter_2.html'; Order = 2 },
+    @{ Name = 'chapter-3.md'; Permalink = '/AI_Agent_with_MCP/chapter_3.html'; Order = 3 },
+    @{ Name = 'chapter-4.md'; Permalink = '/AI_Agent_with_MCP/chapter_4.html'; Order = 4 },
+    @{ Name = 'chapter-5.md'; Permalink = '/AI_Agent_with_MCP/chapter_5.html'; Order = 5 },
+    @{ Name = 'chapter-6.md'; Permalink = '/AI_Agent_with_MCP/chapter_6.html'; Order = 6 },
+    @{ Name = 'chapter-7.md'; Permalink = '/AI_Agent_with_MCP/chapter_7.html'; Order = 7 },
+    @{ Name = 'about-the-author.md'; Permalink = '/AI_Agent_with_MCP/about_the_author.html'; Order = 8 }
 )
 
 foreach ($entry in $englishFiles) {

@@ -1,7 +1,5 @@
 ---
 title: '1장. 에이전트 AI와 MCP'
-author: Kyle Stratis
-layout: post
 permalink: /AI_Agent_with_MCP/ko/chapter_1.html
 lang: ko
 book_order: 1

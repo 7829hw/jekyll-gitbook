@@ -1,0 +1,87 @@
+{% if page.lang == 'ko' %}
+    {% assign book_items = site.data.mcp_book.korean %}
+{% else %}
+    {% assign book_items = site.data.mcp_book.english %}
+{% endif %}
+{% assign book_previous = nil %}
+{% assign book_next = nil %}
+{% assign previous_candidate = nil %}
+{% assign found_current = false %}
+{% for item in book_items %}
+    {% if found_current %}
+        {% assign book_next = item %}
+        {% break %}
+    {% elsif item.url == page.url %}
+        {% assign book_previous = previous_candidate %}
+        {% assign found_current = true %}
+    {% else %}
+        {% assign previous_candidate = item %}
+    {% endif %}
+{% endfor %}
+<!DOCTYPE HTML>
+<html lang="{{ page.lang | default: 'en' }}">
+    <head>
+
+        {%- include head.html -%}
+
+        {% if book_previous %}
+            <link rel="prev" href="{{ book_previous.url | relative_url }}" />
+        {% else %}
+            <link rel="prev" href="{{ '/' | relative_url }}" />
+        {% endif %}
+
+        {% if book_next %}
+            <link rel="next" href="{{ book_next.url | relative_url }}" />
+        {% endif %}
+    </head>
+    <body class="layout-{{ page.layout | default: 'book' }}">
+        <div class="book layout-{{ page.layout | default: 'book' }}">
+
+            {%- include toc-date.html -%}
+
+            <div class="book-body">
+                <div class="body-inner">
+                    <div class="book-header" role="navigation">
+                        <!-- Title -->
+                        <h1>
+                            <i class="fa fa-circle-o-notch fa-spin"></i>
+                            {% if page.title %}
+                                <a href="." >{{ page.title | escape }}</a>
+                            {% else %}
+                                <a href="." >{{ site.title | escape }}</a>
+                            {% endif %}
+                        </h1>
+                    </div>
+
+                    {%- include body.html -%}
+
+                    {% if book_previous %}
+                        <a href="{{ book_previous.url | relative_url }}" class="navigation navigation-prev navigation-unique" aria-label="Previous page: {{ book_previous.title | escape }}">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                    {% else %}
+                        <a href="{{ '/' | relative_url }}" class="navigation navigation-prev navigation-unique" aria-label="Previous page: {{ site.title | escape }}">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                    {% endif %}
+
+                    {% if book_next %}
+                        <a href="{{ book_next.url | relative_url }}" class="navigation navigation-next navigation-unique" aria-label="Next page: {{ book_next.title | escape }}">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <script>
+            var gitbook = gitbook || [];
+            gitbook.push(function() {
+                gitbook.page.hasChanged({%- include metadata-post.json.tpl -%});
+            });
+            </script>
+        </div>
+
+        {%- include footer.html -%}
+
+    </body>
+</html>

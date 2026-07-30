@@ -12,9 +12,6 @@ url:              'https://7829hw.github.io'
 baseurl:          '/jekyll-gitbook'
 rss:              RSS
 
-# bootstrap: use the remote theme for the site itself
-remote_theme: sighingnow/jekyll-gitbook
-
 toc:
   enabled: true
   h_min:   1
@@ -23,7 +20,7 @@ toc:
 # customize the link favicon in header, will be {{site.baseurl}}/{{site.favicon_path}}
 favicon_path:     /assets/gitbook/images/favicon.ico
 
-# markdown render engine.
+# Markdown
 markdown:         kramdown
 kramdown:
   auto_ids:               true
@@ -39,28 +36,25 @@ syntax_highlighter_style: colorful
 
 markdown_ext:             markdown,mkdown,mkdn,mkd,md
 
-# Permalinks
-permalink:                /:categories/:year-:month-:day-:title:output_ext
-
 # Disqus comments
 # disqushandler:            sighingnow
 
 exclude:
-  - _drafts
+  - README.md
   - scripts
 
 collections:
   pages:
     output: true
     permalink: /:collection/:path/
-  others:
-    output: true
-    permalink: /:collection/:path/
 
-ordered_collections:
-  - posts
-  - pages
-  - others
+defaults:
+  - scope:
+      path: ''
+      type: pages
+    values:
+      author: Kyle Stratis
+      layout: book
 
 # The sidebar is dedicated to the bilingual MCP book navigation.
 book_only: true
@@ -70,8 +64,3 @@ page_width: 800px
 destination:      ./_site
 incremental:      false
 regenerate:       true
-
-plugins:
-  - jekyll-feed
-  - jekyll-readme-index
-  - jemoji

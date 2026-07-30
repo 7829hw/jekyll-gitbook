@@ -3,15 +3,14 @@
         "title": "Introduction",
         "level": "1.1",
         "depth": 1,
-        {% assign reversed_posts = site.posts | reverse %}
-
-        {% if reversed_posts %}
+        {% assign first_book_page = site.data.mcp_book.english | first %}
+        {% if first_book_page %}
         "next": {
-            "title": "{{reversed_posts.first.title}}",
+            "title": {{ first_book_page.title | jsonify }},
             "level": "1.2",
             "depth": 1,
-            "path": "{{reversed_posts.first.path}}",
-            "ref": "{{reversed_posts.first.path}}",
+            "path": {{ first_book_page.url | jsonify }},
+            "ref": {{ first_book_page.url | jsonify }},
             "articles": []
         },
         {% endif %}

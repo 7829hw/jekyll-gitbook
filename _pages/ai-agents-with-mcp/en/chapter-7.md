@@ -1,7 +1,5 @@
 ---
 title: 'Chapter 7. Testing, Securing, and Sharing your MCP Server'
-author: Kyle Stratis
-layout: post
 permalink: /AI_Agent_with_MCP/chapter_7.html
 lang: en
 book_order: 7

@@ -1,7 +1,5 @@
 ---
 title: '6장. MCP 서버 구축: 유틸리티의 고급 활용과 클라이언트 기능 통합'
-author: Kyle Stratis
-layout: post
 permalink: /AI_Agent_with_MCP/ko/chapter_6.html
 lang: ko
 book_order: 6

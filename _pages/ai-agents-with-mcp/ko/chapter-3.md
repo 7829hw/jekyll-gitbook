@@ -1,7 +1,5 @@
 ---
 title: '3장. MCP 클라이언트로 지능형 애플리케이션을 에이전트화하기'
-author: Kyle Stratis
-layout: post
 permalink: /AI_Agent_with_MCP/ko/chapter_3.html
 lang: ko
 book_order: 3
@@ -1080,8 +1078,8 @@ Return a JSON array of prompt objects which have a name (string) and arguments (
 keys are the named parameter name and value is the argument value), or an empty array if no prompts
 are needed. Only include prompts that are directly relevant.
 
-Example: [{{"name": "calculation-helper", "arguments": {{"operation": "addition"}}]}},
- {{"name": "step-by-step-math", "arguments": {{}}}}] or []
+{% raw %}Example: [{{"name": "calculation-helper", "arguments": {{"operation": "addition"}}]}},
+ {{"name": "step-by-step-math", "arguments": {{}}}}] or []{% endraw %}
 """
 
         try:

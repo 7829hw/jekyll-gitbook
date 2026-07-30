@@ -3,13 +3,13 @@
         "title": "Introduction",
         "level": "1.1",
         "depth": 1,
-        {% if page.next %}
+        {% if book_next %}
         "next": {
-            "title": "{{page.next.title}}",
+            "title": {{ book_next.title | jsonify }},
             "level": "1.2",
             "depth": 1,
-            "path": "{{page.next.path}}",
-            "ref": "{{page.next.path}}",
+            "path": {{ book_next.url | jsonify }},
+            "ref": {{ book_next.url | jsonify }},
             "articles": []
         },
         {% endif %}

@@ -1,7 +1,5 @@
 ---
 title: 'Brief Table of Contents (*Not Yet Final*)'
-author: Kyle Stratis
-layout: post
 permalink: /AI_Agent_with_MCP/index.html
 lang: en
 book_order: 0

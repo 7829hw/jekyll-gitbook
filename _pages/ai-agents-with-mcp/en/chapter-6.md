@@ -1,7 +1,5 @@
 ---
 title: 'Chapter 6. Building MCP Servers: Advanced Use with Utilities and Integrating Client Capabilities'
-author: Kyle Stratis
-layout: post
 permalink: /AI_Agent_with_MCP/chapter_6.html
 lang: en
 book_order: 6

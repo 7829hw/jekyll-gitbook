@@ -1,7 +1,5 @@
 ---
 title: 'Chapter 5. Building MCP Servers: Providing Tools, Prompts and Resources to Applications'
-author: Kyle Stratis
-layout: post
 permalink: /AI_Agent_with_MCP/chapter_5.html
 lang: en
 book_order: 5

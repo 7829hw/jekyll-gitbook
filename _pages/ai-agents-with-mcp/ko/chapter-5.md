@@ -1,7 +1,5 @@
 ---
 title: '5장. MCP 서버 구축: 애플리케이션에 도구, 프롬프트, 리소스 제공하기'
-author: Kyle Stratis
-layout: post
 permalink: /AI_Agent_with_MCP/ko/chapter_5.html
 lang: ko
 book_order: 5

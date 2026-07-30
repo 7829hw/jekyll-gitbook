@@ -1,7 +1,5 @@
 ---
 title: 'Chapter 4. MCP Clients: Advanced Use and Best Practices'
-author: Kyle Stratis
-layout: post
 permalink: /AI_Agent_with_MCP/chapter_4.html
 lang: en
 book_order: 4

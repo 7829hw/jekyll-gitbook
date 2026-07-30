@@ -1,7 +1,5 @@
 ---
 title: 'Chapter 1. Agentic AI and MCP'
-author: Kyle Stratis
-layout: post
 permalink: /AI_Agent_with_MCP/chapter_1.html
 lang: en
 book_order: 1

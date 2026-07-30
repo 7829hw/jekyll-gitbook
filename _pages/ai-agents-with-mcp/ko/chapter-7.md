@@ -1,7 +1,5 @@
 ---
 title: '7장. MCP 서버 테스트·보안·공유'
-author: Kyle Stratis
-layout: post
 permalink: /AI_Agent_with_MCP/ko/chapter_7.html
 lang: ko
 book_order: 7
